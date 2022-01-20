@@ -1,24 +1,28 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import Clock from '../src/Clock/Clock';
+import './App.css'
+import none from './BGgifs/none.gif'
 
 function App() {
+  let [background,setBackground] = React.useState('')
+  const changeBG = (e:React.ChangeEvent<HTMLSelectElement>) => {
+    setBackground(e.target.value)
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+    <div style={{ backgroundImage:`url(${none})` }}>
+      <header className='headerST'>
+        Happy Studying!
       </header>
+      <select onChange={e => changeBG(e)}>
+        <option value='black'>None</option>
+        <option></option>
+        <option></option>
+        <option></option>
+        <option></option>
+      </select>
+      {/* {time} */}
+      <Clock/>
     </div>
   );
 }
